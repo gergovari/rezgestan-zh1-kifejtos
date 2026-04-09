@@ -5,3 +5,5 @@
 *.fls
 *.log
 *.synctex*
+res/questions.pdf
+res/reference.pdf
