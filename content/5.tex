@@ -1,0 +1,67 @@
+\section{Egy szabadsági fokú, kritikusan csillapított rezgőrendszer mozgástörvénye}
+
+\subsection*{Állandók meghatározása paraméteresen}
+Kritikusan csillapított rendszer esetén a relatív csillapítási tényező $\zeta = 1$. A karakterisztikus egyenlet gyöke kétszeres valós gyök ($\lambda_{1,2} = -\omega_n$). Ilyenkor a megoldást az aperiodikus határeset adja:
+\begin{equation}
+    x(t) = e^{-\omega_n t} \left( C_1 + C_2 t \right)
+\end{equation}
+Deriválva a sebesség kiszámításához:
+\begin{equation}
+    \dot{x}(t) = -\omega_n e^{-\omega_n t} \left( C_1 + C_2 t \right) + e^{-\omega_n t} \cdot C_2 = e^{-\omega_n t} \left( C_2 - \omega_n C_1 - \omega_n C_2 t \right)
+\end{equation}
+A kezdeti feltételek behelyettesítése ($x(0) = 0, \dot{x}(0) = v_0$):
+\begin{align}
+    x(0) &= 1 \cdot \left( C_1 + C_2 \cdot 0 \right) = C_1 = 0 \\
+    \dot{x}(0) &= 1 \cdot \left( C_2 - \omega_n C_1 - 0 \right) = C_2 = v_0 
+\end{align}
+Ennek alapján a paraméterek $C_1 = 0$ és $C_2 = v_0$, így a mozgástörvény alakja:
+\begin{equation}
+    x(t) = v_0 \cdot t \cdot e^{-\omega_n t}
+\end{equation}
+
+\subsection*{Mozgástörvény ábrázolása (kitérés-idő diagram)}
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            width=10cm, height=6.5cm,
+            axis lines=middle,
+            xlabel={$t$},
+            ylabel={$x(t)$},
+            xmin=0, xmax=6,
+            ymin=0, ymax=0.5,
+            xtick={1}, ytick={0.368},
+            xticklabels={$t_{max} = \frac{1}{\omega_n}$},
+            yticklabels={$x_{max} = \frac{v_0}{e \omega_n}$},
+            enlargelimits=0.1,
+            samples=100,
+            domain=0:6
+        ]
+            % v0 = 1, omega_n = 1
+            \addplot[thick, blue, domain=0:6] {x*exp(-x)};
+            
+            % guidelines
+            \draw[dashed, gray] (axis cs: 1, 0) -- (axis cs: 1, 0.3678) -- (axis cs: 0, 0.3678);
+            
+            % Initial velocity tangent
+            \addplot[dashed, red, domain=0:1.5] {x};
+            \node[red, right] at (axis cs: 1.2, 1.2) {kezdő tangens ($v_0$)};
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Kritikusan csillapított rezgőrendszer mozgástörvénye $x(0)=0, \dot{x}(0)=v_0$ esetén.}
+\end{figure}
+
+\subsection*{Maximális kitérés és annak beállási ideje}
+A rendszer legnagyobb kitérését ott éri el, ahol a sebesség nulla, azaz $\dot{x}(t_{max}) = 0$.
+A sebességfüggvény $C_1 = 0, C_2 = v_0$ esetén:
+\begin{equation}
+    \dot{x}(t) = e^{-\omega_n t} v_0 ( 1 - \omega_n t ) = 0
+\end{equation}
+Mivel $e^{-\omega_n t}$ és $v_0$ általában nem nulla feltételezéssel él, a zárójeles tagnak kell nullának lennie:
+\begin{equation}
+    1 - \omega_n t_{max} = 0 \quad \implies \quad t_{max} = \frac{1}{\omega_n}
+\end{equation}
+Fizikailag ez azt jelenti, hogy a maximális kitérést a \textbf{reciprok sajátkörfrekvencia} értékű idő alatt éri el. A maximális kitérés értéke ($x_{max}$):
+\begin{equation}
+    x_{max} = x(t_{max}) = v_0 \left(\frac{1}{\omega_n}\right) e^{-\omega_n \frac{1}{\omega_n}} = \frac{v_0}{\omega_n \cdot e} \approx 0.368 \frac{v_0}{\omega_n}
+\end{equation}

@@ -1,0 +1,51 @@
+\section{Egy szabadsági fokú, csillapított rezgőrendszer karakterisztikus egyenlete}
+
+\subsection*{Karakterisztikus egyenlet levezetése}
+Az egy szabadsági fokú, csillapított (viszkózus csillapítással rendelkező) rezgőrendszer referencia mozgásegyenlete a következő:
+\begin{equation}
+    m\ddot{x} + k_v \dot{x} + s x = 0 \quad \text{vagyis} \quad \ddot{x} + 2\zeta\omega_n \dot{x} + \omega_{n}^2 x = 0
+\end{equation}
+Ahol $\omega_n = \sqrt{s/m}$ a csillapítatlan sajátkörfrekvencia, és $\zeta$ a relatív csillapítási tényező ($2\zeta\omega_n = \frac{k_v}{m}$).
+A megoldást az exponenciális próbafüggvény alakjában keressük: $x(t) = C e^{\lambda t}$. A deriváltakat ($\dot{x} = C \lambda e^{\lambda t}$, $\ddot{x} = C \lambda^2 e^{\lambda t}$) visszahelyettesítve a differenciálegyenletbe:
+\begin{equation}
+    \left( \lambda^2 + 2\zeta\omega_n \lambda + \omega_n^2 \right) C e^{\lambda t} = 0
+\end{equation}
+A nemtriviális megoldáshoz ($C e^{\lambda t} \neq 0$) a zárójelben lévő kifejezésnek nullának kell lennie, ami feladja az ún. karakterisztikus egyenletet:
+\begin{equation}
+    \lambda^2 + 2\zeta\omega_n \lambda + \omega_n^2 = 0
+\end{equation}
+
+\subsection*{Karakterisztikus gyökök gyenge csillapítás esetén és elhelyezkedésük}
+A másodfokú egyenlet megoldóképletével kifejezve a gyököket:
+\begin{equation}
+    \lambda_{1,2} = -\zeta\omega_n \pm \sqrt{\left(\zeta\omega_n\right)^2 - \omega_n^2} = -\zeta\omega_n \pm \omega_n\sqrt{\zeta^2 - 1}
+\end{equation}
+Gyenge csillapítás esetén a relatív csillapítási tényező kisebb, mint egy: $\zeta < 1$. Ekkor a gyök alatti kifejezés negatív, így két konjugált komplex gyököt kapunk:
+\begin{equation}
+    \lambda_{1,2} = -\zeta\omega_n \pm i \omega_n\sqrt{1 - \zeta^2} = -\delta \pm i \omega_d
+\end{equation}
+Ahol $\delta = \zeta \omega_n$ a lecsengési tényező, és $\omega_d = \omega_n \sqrt{1-\zeta^2}$ a csillapított sajátkörfrekvencia.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        % axes
+        \draw[->, thick] (-3, 0) -- (1, 0) node[right] {Re};
+        \draw[->, thick] (0, -2) -- (0, 2) node[above] {Im};
+        % roots
+        \filldraw[red] (-1.5, 1.5) circle (2pt) node[above left] {$\lambda_1$};
+        \filldraw[red] (-1.5, -1.5) circle (2pt) node[below left] {$\lambda_2$};
+        
+        \draw[dashed, gray] (-1.5, 0) -- (-1.5, 1.5) node[midway, right] {$\omega_d$};
+        \draw[dashed, gray] (0, 1.5) -- (-1.5, 1.5);
+        \draw[dashed, gray] (-1.5, 0) -- (-1.5, -1.5);
+        \node at (-1.5, -0.3) {$-\zeta\omega_n$};
+    \end{tikzpicture}
+    \caption{A karakterisztikus gyökök komplex számsíkon gyengén csillapított esetben.}
+\end{figure}
+
+\subsection*{A valós és képzetes rész jelentése}
+A gyengén csillapított esetben ($\zeta < 1$) a karakterisztikus gyök matematikai részei meghatározzák a fizikai mozgás jellegét:
+\begin{itemize}
+    \item \textbf{Valós rész ($-\zeta\omega_n$ vagy $-\delta$):} Kifejezi a mozgás időbeli elhalásának (csillapodásának) mértékét. Ez felelős a negatív exponenciális tagért ($e^{-\zeta\omega_n t}$), ami a rezgés amplitúdóját meghatározó burkológörbe zsugorodását adja.
+    \item \textbf{Képzetes rész ($\omega_d = \omega_n\sqrt{1-\zeta^2}$):} Kifejezi a periodikus mozgássebességet, a rezgések tényleges eltolt (csillapított) sajátkörfrekvenciáját. Alacsony csillapítás mellett közel megegyezik a csíllapítatlan frekvenciával ($\omega_d \approx \omega_n$), ami meghatározza a $T_d = \frac{2\pi}{\omega_d}$ rezgési periódusidőt.
+\end{itemize}

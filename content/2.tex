@@ -1,0 +1,54 @@
+\section{Egy szabadsági fokú, csillapítatlan rezgőrendszer mozgástörvénye}
+
+\subsection*{Karakterisztikus egyenlet levezetése a próbafüggvény módszerrel}
+Az egy szabadsági fokú csillapítatlan rezgőrendszer referencia mozgásegyenlete a következő alakú:
+\begin{equation}
+    m\ddot{x} + kx = 0 \quad \text{vagyis} \quad \ddot{x} + \omega_{n}^2 x = 0
+\end{equation}
+Ahol $\omega_n = \sqrt{k/m}$ (referencia saját-körfrekvencia).
+A megoldást a próbafüggvény exponenciális alakjában keressük:
+\begin{equation}
+    x(t) = C e^{\lambda t}
+\end{equation}
+Ennek deriváltjai: $\dot{x}(t) = \lambda C e^{\lambda t}$, $\ddot{x}(t) = \lambda^2 C e^{\lambda t}$. Visszahelyettesítve a mozgásegyenletbe:
+\begin{equation}
+    \left( \lambda^2 + \omega_n^2 \right) C e^{\lambda t} = 0
+\end{equation}
+Mivel a nemtriviális megoldás érdekében $C e^{\lambda t} \neq 0$, a zárójelben lévő kifejezésnek kell nullának lennie. Így kapjuk meg a karakterisztikus egyenletet:
+\begin{equation}
+    \lambda^2 + \omega_n^2 = 0
+\end{equation}
+
+\subsection*{Karakterisztikus gyökök és komplex számsíkon való elhelyezkedésük}
+A karakterisztikus egyenletből a gyökök kifejezve:
+\begin{equation}
+    \lambda_{1,2} = \pm i \omega_n
+\end{equation}
+amelyek egy tiszta képzetes konjugált gyökpárt alkotnak.
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        % axes
+        \draw[->, thick] (-2, 0) -- (2, 0) node[right] {Re};
+        \draw[->, thick] (0, -2) -- (0, 2) node[above] {Im};
+        % roots
+        \filldraw[red] (0, 1.5) circle (2pt) node[right] {$+i\omega_n$};
+        \filldraw[red] (0, -1.5) circle (2pt) node[right] {$-i\omega_n$};
+    \end{tikzpicture}
+    \caption{A karakterisztikus gyökök elhelyezkedése a komplex számsíkon.}
+\end{figure}
+
+\subsection*{Az általános megoldás felírásának lépései}
+Mivel a gyökök tiszta képzetesek ($\lambda_{1,2} = \pm i \omega_n$), az általános megoldás felírható az Euler-formulák felhasználásával a próbafüggvények lineáris kombinációjaként:
+\begin{equation}
+    x(t) = C_1 e^{i\omega_n t} + C_2 e^{-i\omega_n t}
+\end{equation}
+A fizikai értelmezhetőség (tisztán valós kitérés) miatt az Euler formula segítségével a megoldást trigonometrikus alakba konvertáljuk:
+\begin{equation}
+    x(t) = A \cos(\omega_n t) + B \sin(\omega_n t)
+\end{equation}
+vagy egyenértékű amplitúdó-fázisszög alakban definiáljuk:
+\begin{equation}
+    x(t) = X_0 \sin(\omega_n t + \phi) \quad \text{vagy} \quad x(t) = X_0 \cos(\omega_n t - \phi')
+\end{equation}
+Az eljárás utolsó lépése az $A, B$ (vagy $X_0, \phi$) konstansok értékének meghatározása a perem- vagy kezdeti feltételekből ($x(0), \dot{x}(0)$).
