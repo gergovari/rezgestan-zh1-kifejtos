@@ -21,21 +21,21 @@ A mechanikai modell a következő ábrán látható.
 
         % --- Ütközés előtt ---
         \begin{scope}[shift={(0,0)}]
-            \draw[->] (-1.5, {-1.5*tan(\ang)}) -- (2.5, {2.5*tan(\ang)}) node[right] {$\mathbf{n}$};
+            \draw[->] (\ang-180:1.6) -- (\ang:2.8) node[right] {$\mathbf{n}$};
             
             % ghosts
             \draw[gray, opacity=0.2, fill=gray!10] (-0.8, {-0.8*tan(\ang)-0.3}) circle (\Rone);
             \draw[gray, opacity=0.4, fill=gray!20] (-0.4, {-0.4*tan(\ang)-0.1}) circle (\Rone);
 
             \coordinate (C1) at (0, 0);
-            \coordinate (C2) at (1.5, {1.5*tan(\ang)});
-            \coordinate (S) at (0.8, {0.8*tan(\ang)});
+            \coordinate (C2) at (\ang:1.35);
+            \coordinate (S) at (\ang:0.85);
 
             \draw[ball1] (C1) circle (\Rone);
             \draw[ball2] (C2) circle (\Rtwo);
             
             \node at (-0.7, 0.8) {$m_1$};
-            \node at (2.2, 0.2) {$m_2$};
+            \node at (2.05, 0.6) {$m_2$};
 
             \filldraw[c1cent] (C1) circle (1.5pt);
             \filldraw[c2cent] (C2) circle (1.5pt);
@@ -50,11 +50,11 @@ A mechanikai modell a következő ábrán látható.
 
         % --- Ütközés közben ---
         \begin{scope}[shift={(5.5,0)}]
-            \draw[->] (-1.5, {-1.5*tan(\ang)}) -- (2.6, {2.6*tan(\ang)}) node[right] {$\mathbf{n}$};
+            \draw[->] (\ang-180:1.6) -- (\ang:2.8) node[right] {$\mathbf{n}$};
             
             \coordinate (C1) at (0, 0);
-            \coordinate (C2) at (1.15, {1.15*tan(\ang)});
-            \coordinate (S) at (0.7, {0.7*tan(\ang)});
+            \coordinate (C2) at (\ang:1.15);
+            \coordinate (S) at (\ang:0.72);
 
             \draw[ball1] (C1) circle (\Rone);
             \draw[ball2] (C2) circle (\Rtwo);
@@ -71,19 +71,20 @@ A mechanikai modell a következő ábrán látható.
             % Vector C1
             \coordinate (V1) at ([shift={(65:2.2)}]C1);
             \draw[vel] (C1) -- (V1);
-            \coordinate (P1) at ($(C1)!(V1)!(2.6, {2.6*tan(\ang)})$);
+            \coordinate (NEND) at (\ang:2.8);
+            \coordinate (P1) at ($(C1)!(V1)!(NEND)$);
             \draw[dashed, gray!80] (V1) -- (P1);
 
             % Vector S
             \coordinate (VS) at ([shift={(45:1.5)}]S);
             \draw[vel] (S) -- (VS) node[above] {$\mathbf{c}_S$};
-            \coordinate (PS) at ($(S)!(VS)!(2.6, {2.6*tan(\ang)})$);
+            \coordinate (PS) at ($(S)!(VS)!(NEND)$);
             \draw[dashed, gray!80] (VS) -- (PS);
 
             % Vector C2
             \coordinate (V2) at ([shift={(-10:1.3)}]C2);
             \draw[vel] (C2) -- (V2);
-            \coordinate (P2) at ($(C2)!(V2)!(2.6, {2.6*tan(\ang)})$);
+            \coordinate (P2) at ($(C2)!(V2)!(NEND)$);
             \draw[dashed, gray!80] (V2) -- (P2);
 
             \node at (0.6, -2) {Ütközés közben};
@@ -91,11 +92,11 @@ A mechanikai modell a következő ábrán látható.
 
         % --- Ütközés után ---
         \begin{scope}[shift={(11,0)}]
-            \draw[->] (-1.5, {-1.5*tan(\ang)}) -- (2.8, {2.8*tan(\ang)}) node[right] {$\mathbf{n}$};
+            \draw[->] (\ang-180:1.6) -- (\ang:2.8) node[right] {$\mathbf{n}$};
             
             \coordinate (C1) at (0, 0);
-            \coordinate (C2) at (1.5, {1.5*tan(\ang)});
-            \coordinate (S) at (0.8, {0.8*tan(\ang)});
+            \coordinate (C2) at (\ang:1.35);
+            \coordinate (S) at (\ang:0.85);
 
             \draw[ball1] (C1) circle (\Rone);
             \draw[ball2] (C2) circle (\Rtwo);
