@@ -1,3 +1,4 @@
+\newpage
 \section{Száraz súrlódással csillapított rezgőrendszerek}
 
 \subsection*{Mozgástörvény ábrázolása}
@@ -6,33 +7,34 @@ A száraz (Coulomb-) súrlódással rendelkező rendszer kitéréséből ($x_0>0
     \centering
     \begin{tikzpicture}
         \begin{axis}[
-            width=10cm, height=6.5cm,
+            width=12cm, height=6.5cm,
             axis lines=middle,
             xlabel={$t$},
             ylabel={$x(t)$},
-            xmin=0, xmax=12,
+            xmin=0, xmax=17,
             ymin=-4, ymax=4,
             xtick=\empty, ytick={3.5},
             yticklabels={$x_0$},
             enlargelimits=0.1,
-            samples=200,
-            domain=0:9.42
+            samples=60
         ]
             % Linear envelopes
-            \addplot[dashed, gray, domain=0:12] {3.5 - 0.23*x};
-            \addplot[dashed, gray, domain=0:12] {-3.5 + 0.23*x};
+            \addplot[dashed, gray, domain=0:17] {3.5 - 0.22918*x};
+            \addplot[dashed, gray, domain=0:17] {-3.5 + 0.22918*x};
             
             % Drawing piecewise dry friction exact motion
-            % Period is pi. F/k offset changes every pi seconds. Amplitude drops by 2*F/k per half cycle (4*F/k per full cycle)
-            \addplot[thick, blue, domain=0:3.1415] { (3.5 - 0.36)*cos(deg(2*x)) + 0.36 };
-            \addplot[thick, blue, domain=3.1415:6.283] { (3.5 - 3*0.36)*cos(deg(2*x)) - 0.36 };
-            \addplot[thick, blue, domain=6.283:9.424] { (3.5 - 5*0.36)*cos(deg(2*x)) + 0.36 };
+            \addplot[thick, blue, domain=0:3.14159] { (3.5 - 0.36)*cos(deg(x)) + 0.36 };
+            \addplot[thick, blue, domain=3.14159:6.28318] { (3.5 - 3*0.36)*cos(deg(x)) - 0.36 };
+            \addplot[thick, blue, domain=6.28318:9.42477] { (3.5 - 5*0.36)*cos(deg(x)) + 0.36 };
+            \addplot[thick, blue, domain=9.42477:12.56637] { (3.5 - 7*0.36)*cos(deg(x)) - 0.36 };
+            \addplot[thick, blue, domain=12.56637:15.70796] { (3.5 - 9*0.36)*cos(deg(x)) + 0.36 };
+            \addplot[thick, blue, domain=15.70796:17] { 0.10 }; % Megáll
             
             % Stop band
-            \draw[fill=red, opacity=0.1] (0, -0.36) rectangle (12, 0.36);
-            \draw[dashed, red] (0, 0.36) -- (12, 0.36);
-            \draw[dashed, red] (0, -0.36) -- (12, -0.36);
-            \node[red, right] at (12, 0.5) {állósáv $\left(\pm\frac{F_s}{k}\right)$};
+            \draw[fill=red, opacity=0.1] (0, -0.36) rectangle (17, 0.36);
+            \draw[dashed, red] (0, 0.36) -- (17, 0.36);
+            \draw[dashed, red] (0, -0.36) -- (17, -0.36);
+            \node[red, above left] at (17, 0.36) {állósáv $\left(\pm\frac{F_s}{k}\right)$};
         \end{axis}
     \end{tikzpicture}
     \caption{Száraz súrlódásos csillapítású mozgástörvény. A piros tartomány jelöli az állósávot.}
@@ -43,6 +45,7 @@ Ellentétben a viszkózus csillapítással, ahol exponenciálisan csökkent az a
 
 A beállás (megállás) akkor következik be, amikor a sebesség nullává válik valamelyik szélső (forduló) pontban, és az adott helyen a rugóban ébredő visszatérítő erő kisebb lesz, mint a maximális statikus tapadási súrlódóerő ($|k x| \le F_s$). Vagyis a mozgás nem tart végtelen ideig felületesen elvékonyodva (mint a viszkózus esetben), hanem \textbf{véges megfogható idő alatt} véget ér. A tömeg egy ún. \textbf{álló-sávon} (halott zónán, $x_{stop} \in [-\frac{F_s}{k}, \frac{F_s}{k}]$) belül bárhol végleg megállhat, aszimmetrikusan, nem feltétlenül az origóhoz rendelt abszolút egyensúlyi helyzetben.
 
+\newpage
 \subsection*{A súrlódási tényező hatása}
 \begin{itemize}
     \item \textbf{Beállásra gyakorolt hatás:} A súrlódási tényező ($\mu$) megadásával nő a tapadási és csúszási súrlódóerő nagysága. Ennek hatására a lineáris csökkenés (a burkológörbe meredeksége) sokkal agresszívabb lesz, emiatt a beállás (megállás) \textbf{jegyzetten hamarabb} áll be kevesebb lengés alatt. Továbbá megnő a piros "álló-sáv" vastagsága is, tehát annál pontatlanabb lesz a rendszer központosítása visszatéréskor.

@@ -1,9 +1,9 @@
 \babel@toc {magyar}{}\relax 
 \contentsline {section}{\numberline {1}Centrikus ütközés mechanikai modellje}{1}{}%
 \contentsline {section}{\numberline {2}Egy szabadsági fokú, csillapítatlan rezgőrendszer mozgástörvénye}{2}{}%
-\contentsline {section}{\numberline {3}Egy szabadsági fokú, csillapított rezgőrendszer karakterisztikus egyenlete}{3}{}%
+\contentsline {section}{\numberline {3}Egy szabadsági fokú, csillapított rezgőrendszer karakterisztikus egyenlete}{4}{}%
 \contentsline {section}{\numberline {4}Egy szabadsági fokú, gyengén csillapított rezgőrendszer mozgástörvénye}{5}{}%
-\contentsline {section}{\numberline {5}Egy szabadsági fokú, kritikusan csillapított rezgőrendszer mozgástörvénye}{6}{}%
-\contentsline {section}{\numberline {6}A relatív csillapítási tényező szerepe a mozgástörvényben}{7}{}%
-\contentsline {section}{\numberline {7}Száraz súrlódással csillapított rezgőrendszerek}{9}{}%
-\contentsline {section}{\numberline {8}Gerjesztett rezgőrendszerek}{10}{}%
+\contentsline {section}{\numberline {5}Egy szabadsági fokú, kritikusan csillapított rezgőrendszer mozgástörvénye}{7}{}%
+\contentsline {section}{\numberline {6}A relatív csillapítási tényező szerepe a mozgástörvényben}{8}{}%
+\contentsline {section}{\numberline {7}Száraz súrlódással csillapított rezgőrendszerek}{10}{}%
+\contentsline {section}{\numberline {8}Gerjesztett rezgőrendszerek}{12}{}%
